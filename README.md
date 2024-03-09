@@ -22,6 +22,7 @@ graph TD;
     E --> G[Develop Bug Fix];
     G --> H[Review & Merge Fix];
     H --> I[Close Issue with Fix Confirmation];
+```
 
 
 # Bug Report Workflow
