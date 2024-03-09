@@ -24,71 +24,71 @@ graph TD;
     H --> I[Close Issue with Fix Confirmation];
 ```
 
-Hellow world1111
-
-# To-Do List API Documentation
+# User Management API Documentation
 
 ## Introduction
 
-Welcome to the To-Do List API Documentation. This API allows users to manage their to-do list, with functionalities to add, retrieve, update, and delete to-do items.
+Welcome to the User Management API documentation. This API provides access to user profiles, allowing for operations such as creating, reading, updating, and deleting user information.
 
 ## Authentication
 
-This API requires authentication via API keys. Include your API key in the request header like so:
-
+Requests to this API must be authenticated using API keys. Include your API key in the request headers like so:
 
 
 ## API Endpoints
 
-Below are the details of the API endpoints available.
+### Retrieve User Information
 
-### Retrieve a To-Do Item
+Retrieves detailed information about a user by their unique ID.
 
-Retrieves the details of a specific to-do item by its ID.
+- **URL:** `/api/users/:id`
+- **Method:** `GET`
+- **URL Parameters**
 
-- **URL**
+  | Parameter | Type   | Description       |
+  |-----------|--------|-------------------|
+  | id        | String | The user's unique ID. |
 
-  `/todos/:id`
+- **Headers**
 
-- **Method**
+  | Header        | Value            |
+  |---------------|------------------|
+  | Authorization | Bearer YOUR_API_KEY_HERE |
 
-  `GET`
+- **Success Response**
 
-- **URL Params**
+  - **Code:** `200 OK`
+  - **Content:**
 
-  **Required:**
-  
-  `id=[integer]` - The ID of the to-do item.
+    | Field     | Type    | Description              |
+    |-----------|---------|--------------------------|
+    | id        | String  | The user's unique ID.    |
+    | name      | String  | The user's name.         |
+    | email     | String  | The user's email address.|
+    | createdAt | String  | Account creation date.   |
 
-- **Data Params**
+    ```json
+    {
+      "id": "123",
+      "name": "John Doe",
+      "email": "johndoe@example.com",
+      "createdAt": "2024-01-01T12:00:00Z"
+    }
+    ```
 
-  None
+- **Error Response**
 
-- **Success Response:**
-
-  - **Code:** 200 OK
+  - **Code:** `404 NOT FOUND`
   - **Content:**
   
     ```json
     {
-      "id": 1,
-      "task": "Buy milk",
-      "completed": false
+      "error": "UserNotFound",
+      "message": "The user with the given ID was not found."
     }
     ```
 
-- **Error Response:**
-
-  - **Code:** 404 NOT FOUND
-  - **Content:**
-  
-    ```json
-    {
-      "error": "ItemNotFound"
-    }
-    ```
-
-- **Sample Call:**
+- **Sample Call**
 
   ```bash
-  curl -i -H "Accept: application/json" -H "Authorization: ApiKey YOUR_API_KEY_HERE" "https://api.example.com/todos/1"
+  curl -X GET "https://api.example.com/api/users/123" -H "Authorization: Bearer YOUR_API_KEY_HERE"
