@@ -25,3 +25,70 @@ graph TD;
 ```
 
 Hellow world1111
+
+# To-Do List API Documentation
+
+## Introduction
+
+Welcome to the To-Do List API Documentation. This API allows users to manage their to-do list, with functionalities to add, retrieve, update, and delete to-do items.
+
+## Authentication
+
+This API requires authentication via API keys. Include your API key in the request header like so:
+
+
+
+## API Endpoints
+
+Below are the details of the API endpoints available.
+
+### Retrieve a To-Do Item
+
+Retrieves the details of a specific to-do item by its ID.
+
+- **URL**
+
+  `/todos/:id`
+
+- **Method**
+
+  `GET`
+
+- **URL Params**
+
+  **Required:**
+  
+  `id=[integer]` - The ID of the to-do item.
+
+- **Data Params**
+
+  None
+
+- **Success Response:**
+
+  - **Code:** 200 OK
+  - **Content:**
+  
+    ```json
+    {
+      "id": 1,
+      "task": "Buy milk",
+      "completed": false
+    }
+    ```
+
+- **Error Response:**
+
+  - **Code:** 404 NOT FOUND
+  - **Content:**
+  
+    ```json
+    {
+      "error": "ItemNotFound"
+    }
+    ```
+
+- **Sample Call:**
+
+  ```bash
+  curl -i -H "Accept: application/json" -H "Authorization: ApiKey YOUR_API_KEY_HERE" "https://api.example.com/todos/1"
