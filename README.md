@@ -14,14 +14,22 @@ Steps:
 
 ```mermaid
 graph TD;
-    A[User Identifies Bug] --> B[Document Bug's Details];
-    B --> C[Submit Bug Report];
-    C --> D{Review Report};
-    D -->|Accepted| E[Schedule Bug Fix];
-    D -->|Rejected| F[Close Issue];
-    E --> G[Develop Bug Fix];
-    G --> H[Review & Merge Fix];
-    H --> I[Close Issue with Fix Confirmation];
+    A[Refine Blog Titles] --> B[Google SERP Queries];
+    B --> C[LLM Summarize Text];
+    C --> D[Query for Article Outline];
+    D --> E[Query for Content Creation];
+    E --> F[Aggregate Data];
+    F --> G[WordPress Article Post];
+    D --> H[Query for Introduction Section];
+    E --> I[Query for Summary Section];
+    B --> J[Google SERP Queries for YouTube Links];
+    D --> K[Query for Image Prompt];
+    K --> L[Generate Images with DALL-E];
+    J --> D;
+    L -.-> G;
+    H -.-> F;
+    I -.-> F;
+
 ```
 
 # User Management API Documentation
