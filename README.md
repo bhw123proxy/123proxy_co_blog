@@ -64,18 +64,7 @@ graph TD;
 
 ```
 
-# User Management API Documentation
-
-## Introduction
-
-Welcome to the User Management API documentation. This API provides access to user profiles, allowing for operations such as creating, reading, updating, and deleting user information.
-
-## Authentication
-
-Requests to this API must be authenticated using API keys. Include your API key in the request headers like so:
-
-
-## BurstyAI Workflow API Documentation
+## API Schema
 
 This documentation provides details on the BurstyAI Workflow API, designed for automating the generation and publication of SEO-optimized blog articles. It leverages the latest in Google search data, incorporates AI-generated images, YouTube links, and integrates specific company and product information, all while directly posting to WordPress.
 
