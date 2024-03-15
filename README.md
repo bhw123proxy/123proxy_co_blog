@@ -18,21 +18,21 @@ Steps:
 
 ```mermaid
 graph TD;
-    A[Refine Blog Titles] --> B[Google SERP Queries];
-    B --> C[LLM Summarize Text];
-    C --> D[Query for Article Outline];
-    D --> E[Query for Content Creation];
-    E --> F[Aggregate Data];
-    F --> G[WordPress Article Post];
-    D --> H[Query for Introduction Section];
-    E --> I[Query for Summary Section];
-    B --> J[Google SERP Queries for YouTube Links];
-    D --> K[Query for Image Prompt];
-    K --> L[Generate Images with DALL-E];
-    J --> D;
-    L -.-> G;
-    H -.-> F;
-    I -.-> F;
+    A[Query with LLM for Blog Article Title Refinement] --> B[Google SERP Queries for Real-Time Data];
+    B --> C[LLM Summarize Text for Key Points and SEO Keywords];
+    C --> D[Query with LLM for Article Outline Generation];
+    D --> E[Query with LLM for Section Content Creation];
+    E --> I[Aggregate Data for Cohesive Article Structure];
+    I --> J[WordPress Article Post for Publishing];
+    D --> F[Query with LLM for Introduction Section Writing];
+    E --> G[Query with LLM for Summary Section Writing];
+    B --> H[Google SERP Queries for YouTube Video Links];
+    D -.-> K[Query with LLM for Image Prompt Generation];
+    K --> L[LLM Generate Images with DALL-E];
+    H --> D;
+    L -.-> J;
+    F -.-> I;
+    G -.-> I;
 
 ```
 
