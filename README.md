@@ -2,6 +2,7 @@
 
 This workflow outlines the process for submitting and handling a bug report in our project.
 
+## Blog Article Writing Workflow
 Steps:
 1. Query with LLM for refining blog article titles based on initial keywords.
 2. Google SERP Queries for gathering real-time data using keywords and locale settings.
@@ -47,60 +48,79 @@ Welcome to the User Management API documentation. This API provides access to us
 Requests to this API must be authenticated using API keys. Include your API key in the request headers like so:
 
 
-## API Endpoints
+## BurstyAI Workflow API Documentation
 
-### Retrieve User Information
+This documentation provides details on the BurstyAI Workflow API, designed for automating the generation and publication of SEO-optimized blog articles. It leverages the latest in Google search data, incorporates AI-generated images, YouTube links, and integrates specific company and product information, all while directly posting to WordPress.
 
-Retrieves detailed information about a user by their unique ID.
+### API Version
 
-- **URL:** `/api/users/:id`
-- **Method:** `GET`
-- **URL Parameters**
+- **Version:** 1.0.0
 
-  | Parameter | Type   | Description       |
-  |-----------|--------|-------------------|
-  | id        | String | The user's unique ID. |
+### Base URL
 
-- **Headers**
+- **URL:** `https://app.burstyai.com/burstyai/aiflows`
+  - Description: BurstyAI workflow API server
 
-  | Header        | Value            |
-  |---------------|------------------|
-  | Authorization | Bearer YOUR_API_KEY_HERE |
+### API Endpoints
 
-- **Success Response**
+#### Blog Article Writer
 
-  - **Code:** `200 OK`
-  - **Content:**
+Generates and posts an SEO-optimized blog article to WordPress, utilizing Google search data, AI-generated images, YouTube links, and tailored company and product data.
 
-    | Field     | Type    | Description              |
-    |-----------|---------|--------------------------|
-    | id        | String  | The user's unique ID.    |
-    | name      | String  | The user's name.         |
-    | email     | String  | The user's email address.|
-    | createdAt | String  | Account creation date.   |
+- **Endpoint:** `/65e1aa9247065c0001e37a8b/execute`
+- **Method:** `POST`
+- **Description:** Automates the creation and posting of a blog article, ensuring SEO optimization, and inclusion of multimedia and tailored content.
 
-    ```json
-    {
-      "id": "123",
-      "name": "John Doe",
-      "email": "johndoe@example.com",
-      "createdAt": "2024-01-01T12:00:00Z"
-    }
-    ```
+##### Request Body
 
-- **Error Response**
+- **Content-Type:** `application/json`
+- **Required:** Yes
 
-  - **Code:** `404 NOT FOUND`
-  - **Content:**
-  
-    ```json
-    {
-      "error": "UserNotFound",
-      "message": "The user with the given ID was not found."
-    }
-    ```
+###### Parameters
 
-- **Sample Call**
+| Parameter                          | Type    | Description                                                                                      |
+|------------------------------------|---------|--------------------------------------------------------------------------------------------------|
+| `requiredParams.blog_title`        | string  | The title of the blog article.                                                                   |
+| `requiredParams.blog_topic`        | string  | The main topic or subject of the blog article.                                                   |
+| `optionalParams.section_amount`    | string  | Specifies the number of sections in the blog article.                                            |
+| `optionalParams.tone_of_voice`     | string  | The tone of voice to be used in the article (e.g., informative, casual).                         |
+| `optionalParams.BURSTYAI_SERP_COUNTRY` | string  | Country code for tailoring Google search results (e.g., "us", "uk").                             |
+| `optionalParams.BURSTYAI_SERP_LANGUAGE` | string  | Language code for search results and article generation (e.g., "en", "es").                      |
+| `optionalParams.BURSTYAI_LLM_CHAT_MODEL` | string  | Specifies the LLM model used for content generation.                                             |
+| `optionalParams.BURSTYAI_WORDPRESS_POST_STATUS` | string  | Status of the WordPress post (e.g., "draft", "publish").                                         |
+| `optionalParams.BURSTYAI_WORDPRESS_URL` | string  | The URL of the WordPress site where the article will be posted.                                  |
+| `optionalParams.BURSTYAI_WORDPRESS_USER` | string  | Username for WordPress site access.                                                              |
+| `optionalParams.BURSTYAI_WORDPRESS_PASSWORD` | string  | Password or application password for WordPress site access.                                      |
+| `scheduler.cronExpression`         | string  | Cron expression for scheduling the workflow execution.                                           |
+| `scheduler.timeZone`               | string  | User's browser timezone, must be a valid `java.util.TimeZone` ID.                                |
 
-  ```bash
-  curl -X GET "https://api.example.com/api/users/123" -H "Authorization: Bearer YOUR_API_KEY_HERE"
+##### Responses
+
+- **200 OK:** Workflow successfully initiated, returns a job execution ID.
+  - `{"message": "Workflow job execution id indicating successful operation."}`
+- **400 Bad Request:** Request failed due to missing or invalid parameters.
+- **401 Unauthorized:** Incorrect API credentials provided.
+- **500 Internal Server Error:** An error occurred in processing the request.
+
+### Example Usage
+
+To start the Blog Article Writer workflow, send a `POST` request to `/65e1aa9247065c0001e37a8b/execute` with the necessary JSON payload:
+
+```json
+{
+  "requiredParams": {
+    "blog_title": "The Future of AI in Healthcare",
+    "blog_topic": "Healthcare"
+  },
+  "optionalParams": {
+    "section_amount": "5",
+    "tone_of_voice": "informative",
+    "BURSTYAI_SERP_COUNTRY": "us",
+    "BURSTYAI_SERP_LANGUAGE": "en",
+    "BURSTYAI_LLM_CHAT_MODEL": "latest",
+    "BURSTYAI_WORDPRESS_POST_STATUS": "draft",
+    "BURSTYAI_WORDPRESS_URL": "https://yourwordpresssite.com",
+    "BURSTYAI_WORDPRESS_USER": "admin",
+    "BURSTYAI_WORDPRESS_PASSWORD": "yourpassword"
+  }
+}
