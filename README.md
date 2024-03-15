@@ -1,6 +1,33 @@
-# Bug Report Workflow
+# BurstyAI Blog Article Writer Workflow
 
-This workflow outlines the process for submitting and handling a bug report in our project.
+The BurstyAI Blog Article Writer Workflow is designed to streamline the process of creating and publishing comprehensive, SEO-optimized blog articles. Leveraging the latest advancements in AI and automation, this workflow ensures the production of high-quality content that resonates with your audience and adheres to SEO best practices.
+
+## Key Features
+
+1. **Real-Time Factual Data Integration**: Utilizes up-to-date, factual data as references for blog content, ensuring that the articles are informative and relevant.
+2. **Multimedia Content Generation**: Automatically generates AI-created images and includes YouTube videos within the blog, enhancing reader engagement and providing a richer content experience.
+3. **WordPress Integration**: Seamlessly integrates with WordPress and other webhooks for automated publishing, simplifying the content management process.
+4. **Dynamic Content Linking**: Links to your company and randomly selects a product link from `company_info` and `company_products` sheets to be included in the content, providing direct pathways for readers to explore your offerings.
+5. **Key Takeaways and Citations**: Generates concise key takeaway sections and comprehensive citation lists, adding value and credibility to your blog posts.
+6. **Pre-execution Checks**: Ensures that `company_info` and `company_products` sheets are populated before initiating the blog creation process to maintain content quality and relevance.
+7. **Preparatory Workflow Recommendation**: Recommends using the 'Keyword to Blog Article Plan' workflow as a preliminary step for enhanced blog planning and strategic content creation.
+
+## Optional Parameters
+
+The workflow supports several optional parameters to customize the blog creation process according to your specific needs:
+
+- **Section Amount**: Specifies the number of sections in the blog. Default value: `7-10`.
+- **Tone of Voice**: Sets the tone of voice for the article to be SEO Optimized (Confident, Knowledgeable, Neutral, and Clear). Default value: `SEO Optimized (Confident, Knowledgeable, Neutral, and Clear)`.
+- **BURSTYAI_SERP_COUNTRY**: Tailors the Google search results by country code. Default value: `us`.
+- **BURSTYAI_SERP_LANGUAGE**: Specifies the language for search results and article generation. Default value: `en`.
+- **BURSTYAI_LLM_CHAT_MODEL**: Defines the LLM model to be used for processing queries and generating responses. Default value: `gpt-3.5-turbo-0125`.
+- **BURSTYAI_WORDPRESS_POST_STATUS**: Determines the WordPress post status. Default value: `publish`.
+- **BURSTYAI_WORDPRESS_URL**: The WordPress URL where the blog will be posted. Default value: `@{BURSTYAI_WORDPRESS_URL}@`.
+- **BURSTYAI_WORDPRESS_USER**: The WordPress username for authentication. Default value: `@{BURSTYAI_WORDPRESS_USER}@`.
+- **BURSTYAI_WORDPRESS_PASSWORD**: The WordPress application password for secure access. Default value: `@{BURSTYAI_WORDPRESS_PASSWORD}@`.
+
+By leveraging the BurstyAI Blog Article Writer Workflow, content creators and marketers can efficiently produce and distribute high-quality, SEO-friendly blog articles that engage and inform their target audience, while also driving traffic and conversions through strategically integrated product links and multimedia content.
+
 
 ## Blog Article Writing Workflow
 Steps:
