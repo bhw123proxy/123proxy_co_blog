@@ -3,14 +3,18 @@
 This workflow outlines the process for submitting and handling a bug report in our project.
 
 Steps:
-1. The user identifies a bug.
-2. The user documents the bug's details.
-3. The user submits the bug report through the issue tracker.
-4. The development team reviews the bug report.
-5. If accepted, the bug is scheduled for a fix in the development pipeline.
-6. The team works on the bug fix.
-7. The fix is reviewed and then merged into the main branch.
-8. The issue is closed after confirmation that the bug is fixed.
+1. Query with LLM for refining blog article titles based on initial keywords.
+2. Google SERP Queries for gathering real-time data using keywords and locale settings.
+3. LLM Summarize Text to process gathered data into a concise summary with key points and SEO-optimized keywords.
+4. Query with LLM for generating an article outline, incorporating YouTube video links.
+5. Query with LLM for content creation, writing detailed content for each article section.
+6. Query with LLM for writing an engaging introduction section, including key takeaways.
+7. Query with LLM for crafting a concise summary section, highlighting key points and including citations.
+8. Google SERP Queries for YouTube links specifically, to include relevant video content.
+9. Aggregate Data to combine content sections into a cohesive article structure.
+10. WordPress Article Post to publish the complete article, including multimedia elements.
+11. Query with LLM for generating image prompts for DALL-E.
+12. LLM Generate Images with DALL-E based on prompts to create images for the blog post.
 
 ```mermaid
 graph TD;
